@@ -139,6 +139,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Oxygen.cpp" />
     <ClCompile Include="src\AChecker.cpp" />
     <ClCompile Include="src\BChecker.cpp" />
     <ClCompile Include="src\CChecker.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="include\XChecker.h" />
     <ClInclude Include="include\YChecker.h" />
     <ClInclude Include="include\ZChecker.h" />
+    <ClInclude Include="Oxygen.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="bin\dictionary.txt" />

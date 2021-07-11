@@ -8,6 +8,7 @@
 #include <time.h>
 #include "Puzzle.h"
 #include "LetterFunction.h"
+#include "Oxygen.h"
 
 int main(int argc, char** argv)
 {	
@@ -64,6 +65,8 @@ int main(int argc, char** argv)
 				}
 			}
 			
+
+
 			if(p.isWin())
 			{
 				p.addWin();
