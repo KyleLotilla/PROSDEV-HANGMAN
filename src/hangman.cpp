@@ -8,6 +8,9 @@
 #include <time.h>
 #include "Puzzle.h"
 #include "LetterFunction.h"
+#include "Moves.h"
+#include "CardSystem.h"
+
 
 int main(int argc, char** argv)
 {	
@@ -16,67 +19,82 @@ int main(int argc, char** argv)
 	std::string strInput;
 	//p.displayWordList();                      //uncomment to see the word list loaded for the game
 	LetterFunction *lf = new LetterFunction();
+	CardSystem* cardSystem = new CardSystem();
+	Moves* moves = new Moves();
 	
 	while(p.isGame())
 	{		
 		p.initPuzzle();
-						
-		while (p.isGame() && p.isAlive() && !p.isWin() )
-		{
-			std::cout << std::string(75, '\n');	
-			std::cout << "Hangman! Current Lives: " << p.getLives() << " | wins: "<< p.getWins() << " | losses: " << p.getLosses() << "\n\n";
-			p.displayPuzzleString();
-			p.displayBoard();
-			std::cout <<"Guess a letter > ";
-			std::cin >> strInput;
-			
-			if(strInput.size() == 1) //single char input
+		while (p.isGame() && p.isAlive() && !p.isWin()) {
+			cardSystem->draw();
+			while ((p.isGame() && p.isAlive() && !p.isWin()) && moves->hasMoves())
 			{
-				char cInput = lf->check(strInput[0]);
-				
-				if(p.isInBoard(cInput))
+				std::cout << std::string(75, '\n');
+				std::cout << "Hangman! Current Lives: " << p.getLives() << " | wins: " << p.getWins() << " | losses: " << p.getLosses() << "\n\n";
+				p.displayPuzzleString();
+				p.displayBoard();
+				moves->displayMoves();
+				std::cout << "\n";				
+				cardSystem->display();
+				//std::cout <<"Guess a letter > ";
+				std::cin >> strInput;
+				int num = stoi(strInput);
+
+				//if(strInput.size() == 1) //single char input
+				if (num >= 1 && num <= cardSystem->GetNumCards())
 				{
-					int ansIndex = p.findInAnswer(cInput);
-					if(ansIndex == std::string::npos) //wrong letter
+					Card* playCard = cardSystem->PlayCard(num);
+					char cInput = lf->check(playCard->getLetter());
+					moves->CardUsed();
+					if (p.isInBoard(cInput))
+					{
+						int ansIndex = p.findInAnswer(cInput);
+						if (ansIndex == std::string::npos) //wrong letter
+						{
+							p.loseLife();
+						}
+						else //right letter
+						{
+							p.openPuzzle(ansIndex);
+						}
+					}
+					else
 					{
 						p.loseLife();
+						//no longer in board					
 					}
-					else //right letter
+				}
+				else //multi char input
+				{
+					if (strInput == "quit" || strInput == "exit")
 					{
-						p.openPuzzle(ansIndex);
+						p.endGame();
+					}
+					else
+					{
+						std::cout << "invalid input!" << std::endl;
 					}
 				}
-				else
+
+				if (p.isWin())
 				{
-					p.loseLife();
-					//no longer in board					
-				}				
-			}
-			else //multi char input
-			{
-				if(strInput == "quit" || strInput == "exit")
-				{				
-					p.endGame();
+					p.addWin();
+					std::cout << "\nCongratulations, you correctly guessed the word [" << p.getAnswer() << "]!" << std::endl;
+					system("pause");
 				}
-				else 
+				else if (!p.isAlive())
 				{
-					std::cout << "invalid input!" << std::endl;
+					p.addLoss();
+					std::cout << "\nSorry, the correct word is [" << p.getAnswer() << "]!" << std::endl;
+					system("pause");
 				}
+
 			}
+			cardSystem->discardAll();
+			moves->IncreaseMoves();
+			moves->Replenish();
+		}
 			
-			if(p.isWin())
-			{
-				p.addWin();
-				std::cout << "\nCongratulations, you correctly guessed the word [" << p.getAnswer() << "]!"<< std::endl;
-				system("pause");
-			}
-			else if (!p.isAlive())
-			{
-				p.addLoss();
-				std::cout << "\nSorry, the correct word is [" << p.getAnswer() << "]!" << std::endl;
-				system("pause");
-			}
-		}			
 	}	
 	delete lf;
 	

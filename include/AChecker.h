@@ -1,5 +1,6 @@
 #include "LetterChecker.h"
 
+
 class AChecker : public LetterChecker
 {
 	//override the function "checkMyLetter"	
