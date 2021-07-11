@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Oxygen.cpp" />
+    <ClCompile Include="src\Card.cpp" />
     <ClCompile Include="src\AChecker.cpp" />
     <ClCompile Include="src\BChecker.cpp" />
+    <ClCompile Include="src\CardSystem.cpp" />
     <ClCompile Include="src\CChecker.cpp" />
     <ClCompile Include="src\DChecker.cpp" />
     <ClCompile Include="src\EChecker.cpp" />
@@ -153,9 +155,11 @@
     <ClCompile Include="src\JChecker.cpp" />
     <ClCompile Include="src\KChecker.cpp" />
     <ClCompile Include="src\LChecker.cpp" />
+    <ClCompile Include="src\LetterCard.cpp" />
     <ClCompile Include="src\LetterChecker.cpp" />
     <ClCompile Include="src\LetterFunction.cpp" />
     <ClCompile Include="src\MChecker.cpp" />
+    <ClCompile Include="src\Moves.cpp" />
     <ClCompile Include="src\NChecker.cpp" />
     <ClCompile Include="src\OChecker.cpp" />
     <ClCompile Include="src\PChecker.cpp" />
@@ -174,6 +178,8 @@
   <ItemGroup>
     <ClInclude Include="include\AChecker.h" />
     <ClInclude Include="include\BChecker.h" />
+    <ClInclude Include="include\Card.h" />
+    <ClInclude Include="include\CardSystem.h" />
     <ClInclude Include="include\CChecker.h" />
     <ClInclude Include="include\DChecker.h" />
     <ClInclude Include="include\EChecker.h" />
@@ -184,9 +190,11 @@
     <ClInclude Include="include\JChecker.h" />
     <ClInclude Include="include\KChecker.h" />
     <ClInclude Include="include\LChecker.h" />
+    <ClInclude Include="include\LetterCard.h" />
     <ClInclude Include="include\LetterChecker.h" />
     <ClInclude Include="include\LetterFunction.h" />
     <ClInclude Include="include\MChecker.h" />
+    <ClInclude Include="include\Moves.h" />
     <ClInclude Include="include\NChecker.h" />
     <ClInclude Include="include\OChecker.h" />
     <ClInclude Include="include\PChecker.h" />

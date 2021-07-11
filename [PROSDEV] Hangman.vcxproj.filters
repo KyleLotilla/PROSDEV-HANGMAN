@@ -105,7 +105,20 @@
     <ClCompile Include="src\ZChecker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Oxygen.cpp">
+=======
+    <ClCompile Include="src\CardSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LetterCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Moves.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Card.cpp">
+>>>>>>> master
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -198,6 +211,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Oxygen.h">
+		<Filter>Header Files</Filter>
+	</ClInclude>
+    <ClInclude Include="include\LetterCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Moves.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CardSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
