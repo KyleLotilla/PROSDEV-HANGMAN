@@ -2,12 +2,22 @@
 
 Oxygen::Oxygen()
 {
-	this->nOxygen = this->curOxygen;
+	
+}
+
+void Oxygen::depleteOxygen()
+{
+	this->curOxygen = this->curOxygen - 1;
+}
+
+int Oxygen::getCurrentOxygen()
+{
+	return this->curOxygen;
 }
 
 bool Oxygen::hasOxygen()
 {
-	if (this->nOxygen == 0) {
+	if (this->curOxygen == 0) {
 		return false;
 	}
 	else

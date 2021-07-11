@@ -4,8 +4,10 @@ class Oxygen
 {
 public:
 	Oxygen();
+	void depleteOxygen();
+	int getCurrentOxygen();
 	bool hasOxygen();
 	~Oxygen();
 private:
-	int nOxygen = 20, curOxygen = 10;
+	int maxOxygen = 20, curOxygen = 10;
 };

@@ -22,6 +22,7 @@ int main(int argc, char** argv)
 	LetterFunction *lf = new LetterFunction();
 	CardSystem* cardSystem = new CardSystem();
 	Moves* moves = new Moves();
+	Oxygen* oxygen = new Oxygen();
 	
 	while(p.isGame())
 	{		
@@ -31,7 +32,7 @@ int main(int argc, char** argv)
 			while ((p.isGame() && p.isAlive() && !p.isWin()) && moves->hasMoves())
 			{
 				std::cout << std::string(75, '\n');
-				std::cout << "Hangman! Current Lives: " << p.getLives() << " | wins: " << p.getWins() << " | losses: " << p.getLosses() << "\n\n";
+				std::cout << "Hangman! Current Oxygen: " << oxygen->getCurrentOxygen() << " | wins: " << p.getWins() << " | losses: " << p.getLosses() << "\n\n";
 				p.displayPuzzleString();
 				p.displayBoard();
 				moves->displayMoves();
@@ -83,17 +84,26 @@ int main(int argc, char** argv)
 					std::cout << "\nCongratulations, you correctly guessed the word [" << p.getAnswer() << "]!" << std::endl;
 					system("pause");
 				}
-				else if (!p.isAlive())
+				/*else if (!p.isAlive())
 				{
 					p.addLoss();
 					std::cout << "\nSorry, the correct word is [" << p.getAnswer() << "]!" << std::endl;
 					system("pause");
-				}
+				}*/
+				
 
 			}
 			cardSystem->discardAll();
 			moves->IncreaseMoves();
 			moves->Replenish();
+
+			oxygen->depleteOxygen();
+			if (!oxygen->hasOxygen())
+				{
+				p.addLoss();
+				std::cout << "\nSorry, the correct word is [" << p.getAnswer() << "]!" << std::endl;
+				system("pause");
+				}
 		}			
 	}	
 	delete lf;
