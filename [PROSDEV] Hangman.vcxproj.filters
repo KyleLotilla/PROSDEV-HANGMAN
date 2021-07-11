@@ -105,9 +105,9 @@
     <ClCompile Include="src\ZChecker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Oxygen.cpp">
-=======
+	      <Filter>Source Files</Filter>
+	</ClCompile>
     <ClCompile Include="src\CardSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -118,7 +118,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Card.cpp">
->>>>>>> master
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
